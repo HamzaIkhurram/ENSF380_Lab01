@@ -4,10 +4,10 @@ import java.util.Scanner;
 
 public class Application {
     public static void main(String[] args) {
-        // Create a Scanner object to read user input
+        
         Scanner scanner = new Scanner(System.in);
+        //loop thats infinite will exit if thats whats told
 
-        // Infinite loop to keep the calculator running until 'exit' is entered
         while (true) {
             // Prompt the user to enter an operation
             System.out.println("\nEnter operation (add, subtract, multiply, divide, pow, sqrt, log, log10, sin, cos, tan, factorial, permutation) or 'exit' to quit:");
@@ -27,7 +27,6 @@ public class Application {
                 System.out.print("Enter second number: ");
                 double num2 = scanner.nextDouble();
 
-                // Switch statement to handle different operations requiring two inputs
                 switch (operation.toLowerCase()) {
                     case "add":
                         System.out.println("Result: " + add(num1, num2));
@@ -47,13 +46,13 @@ public class Application {
                     case "permutation":
                         int totalElements = (int) num1;
                         int selectedItems = (int) num2;
-                        // Check for invalid inputs for permutation calculation
-                        if (selectedItems > totalElements || totalElements < 0 || selectedItems < 0 || totalElements > 100) {
-                            System.out.println("Error: Invalid input for permutation calculation.");
+                        // Validate input for permutation calculation
+                        if (selectedItems > totalElements || totalElements < 0 || selectedItems < 0) {
+                            System.out.println("Error: Cannot do this permutation calculation, Invalid entry.");
                         } else {
-                            // Perform permutation calculation and display results
-                            System.out.println("Recursive Result: " + permutationRecursive(totalElements, selectedItems));
-                            System.out.println("Iterative Result: " + permutationIterative(totalElements, selectedItems));
+                            // Calculate permutations using both methods and display results
+                            System.out.println("First Result: " + permutationRecursive(totalElements, selectedItems));
+                            System.out.println("Second Result: " + permutationIterative(totalElements, selectedItems));
                         }
                         break;
                     default:
@@ -65,7 +64,6 @@ public class Application {
                 System.out.print("Enter number: ");
                 double num = scanner.nextDouble();
 
-                // Switch statement to handle different operations requiring one input
                 switch (operation.toLowerCase()) {
                     case "sqrt":
                         System.out.println("Result: " + sqrt(num));
@@ -95,80 +93,66 @@ public class Application {
             }
         }
 
-        // Close the scanner to free up resources
         scanner.close();
     }
 
-    // Method to add two numbers
     public static double add(double a, double b) {
         return a + b;
     }
 
-    // Method to subtract the second number from the first
     public static double subtract(double a, double b) {
         return a - b;
     }
 
-    // Method to multiply two numbers
     public static double multiply(double a, double b) {
         return a * b;
     }
 
-    // Method to divide the first number by the second
     public static double divide(double a, double b) {
         if (b == 0) {
-            // Handle division by zero
-            System.out.println("Error: Division by zero");
-            return Double.NaN; // Return NaN to indicate an error
+            System.out.println("Error: Division by 0 is not possible ");
+            return Double.NaN;
         }
         return a / b;
     }
 
-    // Method to calculate the power of a base raised to an exponent
     public static double power(double base, double exponent) {
         return Math.pow(base, exponent);
     }
 
-    // Method to calculate the square root of a number
     public static double sqrt(double number) {
         return Math.sqrt(number);
     }
 
-    // Method to calculate the natural logarithm of a number
     public static double log(double number) {
         return Math.log(number);
     }
 
-    // Method to calculate the base-10 logarithm of a number
     public static double log10(double number) {
         return Math.log10(number);
     }
 
-    // Method to calculate the sine of an angle in degrees
     public static double sin(double angleDegrees) {
         return Math.sin(Math.toRadians(angleDegrees));
     }
 
-    // Method to calculate the cosine of an angle in degrees
     public static double cos(double angleDegrees) {
         return Math.cos(Math.toRadians(angleDegrees));
     }
 
-    // Method to calculate the tangent of an angle in degrees
     public static double tan(double angleDegrees) {
         return Math.tan(Math.toRadians(angleDegrees));
     }
 
-    // Method to calculate the factorial of a number with progress display
+    // Factorial calculation with progress display
     public static long factorial(int num) {
         if (num < 0) {
-            System.out.println("Factorial of negative number is undefined.");
+            System.out.println("Factorial of a negative number is undefined.");
             return 0;
         }
         return factorialHelper(num, num);
     }
 
-    // Helper method to calculate the factorial of a number recursively
     private static long factorialHelper(int originalNum, int num) {
         if (num <= 1) {
             return 1;
@@ -179,15 +163,15 @@ public class Application {
         return num * factorialHelper(originalNum, num - 1);
     }
 
-    // Recursive method to calculate the number of permutations
+    // Recursive permutation calculation
     public static long permutationRecursive(int totalElements, int selectedItems) {
         if (selectedItems == 0) {
-            return 1; // Base case: If no items are selected, there's only one way to do nothing
+            return 1;
         }
         return totalElements * permutationRecursive(totalElements - 1, selectedItems - 1);
     }
 
-    // Iterative method to calculate the number of permutations
+    // Iterative permutation calculation
     public static long permutationIterative(int totalElements, int selectedItems) {
         long result = 1;
         for (int i = 0; i < selectedItems; i++) {
@@ -196,6 +180,8 @@ public class Application {
         return result;
     }
 }
+
+
 
 
 
