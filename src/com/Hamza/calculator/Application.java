@@ -10,7 +10,7 @@ public class Application {
         // Infinite loop to keep the calculator running until 'exit' is entered
         while (true) {
             // Prompt the user to enter an operation
-            System.out.println("Enter operation (add, subtract, multiply, divide, factorial) or 'exit' to quit:");
+            System.out.println("Enter operation (add, subtract, multiply, divide, pow, sqrt, log, log10, sin, cos, tan, factorial) or 'exit' to quit:");
             String operation = scanner.next();
 
             // Check if the user wants to exit
@@ -64,6 +64,65 @@ public class Application {
                     System.out.println("Result: " + divide(divNum1, divNum2));
                     break;
 
+                case "pow":
+                    // Prompt the user to enter the base number
+                    System.out.println("Enter the base:");
+                    double base = scanner.nextDouble();
+                    // Prompt the user to enter the exponent
+                    System.out.println("Enter the exponent:");
+                    double exponent = scanner.nextDouble();
+                    // Perform power calculation and display the result
+                    System.out.println("Result: " + pow(base, exponent));
+                    break;
+
+                case "sqrt":
+                    // Prompt the user to enter a number for square root calculation
+                    System.out.println("Enter a number:");
+                    double numSqrt = scanner.nextDouble();
+                    // Calculate square root and display the result
+                    System.out.println("Result: " + sqrt(numSqrt));
+                    break;
+
+                case "log":
+                    // Prompt the user to enter a number for natural logarithm calculation
+                    System.out.println("Enter a number:");
+                    double numLog = scanner.nextDouble();
+                    // Calculate natural logarithm and display the result
+                    System.out.println("Result: " + log(numLog));
+                    break;
+
+                case "log10":
+                    // Prompt the user to enter a number for base-10 logarithm calculation
+                    System.out.println("Enter a number:");
+                    double numLog10 = scanner.nextDouble();
+                    // Calculate base-10 logarithm and display the result
+                    System.out.println("Result: " + log10(numLog10));
+                    break;
+
+                case "sin":
+                    // Prompt the user to enter an angle in degrees
+                    System.out.println("Enter an angle in degrees:");
+                    double angleSin = scanner.nextDouble();
+                    // Calculate sine of the angle and display the result
+                    System.out.println("Result: " + sin(angleSin));
+                    break;
+
+                case "cos":
+                    // Prompt the user to enter an angle in degrees
+                    System.out.println("Enter an angle in degrees:");
+                    double angleCos = scanner.nextDouble();
+                    // Calculate cosine of the angle and display the result
+                    System.out.println("Result: " + cos(angleCos));
+                    break;
+
+                case "tan":
+                    // Prompt the user to enter an angle in degrees
+                    System.out.println("Enter an angle in degrees:");
+                    double angleTan = scanner.nextDouble();
+                    // Calculate tangent of the angle and display the result
+                    System.out.println("Result: " + tan(angleTan));
+                    break;
+
                 case "factorial":
                     // Prompt the user to enter a number for factorial calculation
                     System.out.println("Enter a number:");
@@ -108,6 +167,41 @@ public class Application {
         return a / b; // Return the quotient of a and b
     }
 
+    // Method to calculate the power of a base raised to an exponent
+    public static double pow(double base, double exponent) {
+        return Math.pow(base, exponent); // Return the result of base raised to the power of exponent
+    }
+
+    // Method to calculate the square root of a number
+    public static double sqrt(double num) {
+        return Math.sqrt(num); // Return the square root of the number
+    }
+
+    // Method to calculate the natural logarithm of a number
+    public static double log(double num) {
+        return Math.log(num); // Return the natural logarithm of the number
+    }
+
+    // Method to calculate the base-10 logarithm of a number
+    public static double log10(double num) {
+        return Math.log10(num); // Return the base-10 logarithm of the number
+    }
+
+    // Method to calculate the sine of an angle in degrees
+    public static double sin(double angle) {
+        return Math.sin(Math.toRadians(angle)); // Convert angle to radians and return the sine value
+    }
+
+    // Method to calculate the cosine of an angle in degrees
+    public static double cos(double angle) {
+        return Math.cos(Math.toRadians(angle)); // Convert angle to radians and return the cosine value
+    }
+
+    // Method to calculate the tangent of an angle in degrees
+    public static double tan(double angle) {
+        return Math.tan(Math.toRadians(angle)); // Convert angle to radians and return the tangent value
+    }
+
     // Method to calculate the factorial of a number
     public static double factorial(double n) {
         if (n <= 1) {
@@ -117,8 +211,6 @@ public class Application {
         }
     }
 }
-
-
 
 
 
